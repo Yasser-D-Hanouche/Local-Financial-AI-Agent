@@ -7,7 +7,7 @@ def main():
     print("=== Welcome to your Personal AI Financial Analyst ===")
     
     symbol = input("Enter the stock symbol you want to research (e.g., AAPL, NVDA, TSLA): ").upper()
-    api_key = 'JGTGEOS9F12I5X7P' 
+    api_key = "Your API key here" 
     
     print("\n--- Step 1: Downloading latest news ---")
     fetch_financial_news(symbol, api_key)

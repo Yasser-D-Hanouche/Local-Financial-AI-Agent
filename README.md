@@ -1,25 +1,28 @@
-# 🤖 Local Financial AI Analyst (RAG)
-A privacy-first, local AI assistant that fetches real-time financial news and answers questions using **Retrieval-Augmented Generation (RAG)**.
+# 📈 AI Financial Analyst: Local RAG Pipeline
+
+A high-performance, **privacy-first** financial research tool. This application uses **Retrieval-Augmented Generation (RAG)** to analyze real-time market news locally, ensuring your investment queries never leave your machine.
 
 ---
 
-## 🌟 Overview
-This project allows users to research stocks (like AAPL, NVDA, TSLA) by combining live market news with a local Large Language Model. Instead of the AI "guessing" or using old data, it searches a local database of recent articles to provide factual, data-driven answers.
+## 🧠 Why This Project?
+Traditional LLMs (like ChatGPT) have a "knowledge cutoff" and can't see today's news. This project solves that by:
 
-### 🛠️ The Tech Stack
-* **LLM:** [Ollama](https://ollama.com/) (Llama 3.2:1b) for local, private inference.
-* **Orchestration:** [LangChain](https://www.langchain.com/) for RAG pipeline management.
-* **Vector Database:** [ChromaDB](https://www.trychroma.com/) for persistent document storage.
-* **Data Sources:** Alpha Vantage API.
+* **Real-time Data:** Injecting live news from Alpha Vantage and Yahoo Finance.
+* **Contextual Memory:** Using a vector database (ChromaDB) to store and compare multiple stocks.
+* **Total Privacy:** Running completely offline via **Ollama**—no data is sent to OpenAI or Google.
 
 ---
 
-## 📐 How It Works
-1.  **Ingestion:** The app fetches the latest news summaries for a specific ticker.
-2.  **Embedding:** Text is split into chunks and converted into mathematical vectors using `nomic-embed-text`.
-3.  **Storage:** These vectors are stored in a local ChromaDB collection.
-4.  **Retrieval:** When you ask a question, the system finds the 5 most relevant news snippets.
-5.  **Generation:** The LLM uses those snippets as "context" to generate a concise financial summary.
+## 🛠️ Technical Architecture
+
+### The RAG Workflow
+1.  **Ingestion Engine:** Fetches raw market data and news for specific tickers (AAPL, NVDA, etc.).
+
+2.  **Document Processing:** Uses `RecursiveCharacterTextSplitter` to break long articles into semantic chunks.
+3.  **Vector Embedding:** Converts text chunks into 768-dimensional vectors using the `nomic-embed-text` model.
+
+4.  **Semantic Search:** Queries **ChromaDB** for the top **K=5** most relevant snippets based on user input.
+5.  **Augmented Generation:** Passes snippets to **Llama 3.2 (1b)** with a specialized financial advisor prompt.
 
 
 

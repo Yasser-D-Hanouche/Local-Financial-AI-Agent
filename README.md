@@ -2,7 +2,7 @@
 An AI-powered financial advisor that uses **Retrieval-Augmented Generation (RAG)** to answer questions based on live stock news.
 
 ## Features
-- **Live Data:** Fetches news using Alpha Vantage and Yahoo Finance APIs.
+- **Live Data:** Fetches news using Alpha Vantage API.
 - **Local AI:** Uses Ollama (Llama 3.2:1b) for 100% private data processing.
 - **Persistent Memory:** Uses ChromaDB to store and retrieve financial news.
 
